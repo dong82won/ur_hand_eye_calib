@@ -1,0 +1,49 @@
+[project]
+name = "ur-hand-eye-calib"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "dong82won", email = "2dongwon@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=2.5.5",
+    "opencv-python<5.0",
+    "pyrealsense2>=2.59.2.11152",
+    "pyyaml>=6.0.3",
+    "ur-rtde>=1.6.5",
+]
+
+[project.scripts]
+calib = "ur_hand_eye_calib.collect_and_calib:main"
+make-board = "ur_hand_eye_calib.make_checkerboard:main"
+
+[build-system]
+requires = ["uv_build>=0.12.21,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ur_hand_eye_calib"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "ruff>=0.17.3",
+]
+
+[tool.ruff]
+line-length = 150
+target-version = "py312"
+
+[tool.ruff.lint]
+# E(스타일), F(로직 오류), I(임포트 정렬), UP(최신 문법 적용), B(버그 가능성)
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.format]
+# 핵심 추가 설정: 마지막 인자 뒤에 쉼표(,)가 있어도 150자 이내면 강제로 한 줄로 합칩니다.
+skip-magic-trailing-comma = true
+# 문자열은 큰따옴표(")로 통일
+quote-style = "double"
+# 들여쓰기 공백 수 (기본 4)
+indent-style = "space"

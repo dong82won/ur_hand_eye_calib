@@ -1,0 +1,22 @@
+robot:
+  ip: "192.168.0.150"         # UR 컨트롤러 IP 주소
+
+camera:
+  width: 1280                 # 컬러 스트림 가로 해상도
+  height: 720                 # 컬러 스트림 세로 해상도
+  fps: 30                     # 프레임 레이트
+  save_images: true           # 캡처 시 원본 이미지를 data/image/에 저장할지 여부
+
+checkerboard:
+  # cols: 9                     # 체크보드 내부 코너 가로 개수
+  # rows: 6                     # 체크보드 내부 코너 세로 개수
+  # square_size_m: 0.025        # 사각형 한 변의 실제 길이 [단위: m] (예: 25mm -> 0.025)
+
+  cols: 8                     # 체크보드 내부 코너 가로 개수
+  rows: 5                     # 체크보드 내부 코너 세로 개수
+  square_size_m: 0.030        # 사각형 한 변의 실제 길이 [단위: m] (예: 30mm -> 0.030)
+
+
+calibration:
+  method: "PARK"              # 알고리즘 선택: TSAI, PARK, HORAUD, ANDREFF, DANIILIDIS
+  min_samples: 10             # 캘리브레이션 계산을 위한 최소 수집 포즈 수
